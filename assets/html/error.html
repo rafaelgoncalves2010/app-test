@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ERRO</title>
+        <style>
+            body {
+                /* background-image: url(../images/bg.png); */
+                background-position: center;
+                background-size: 100%, contain;
+                background-repeat: no-repeat, no-repeat;
+                background-color: #1e376f;
+                margin: 0;
+            }
+            #logomarca {
+                height: 300px;
+            }
+            p {
+                color: white;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 16px;
+                font-weight: 200;
+                text-align: center;
+                margin-top: 50px;
+            }
+            #botao {
+                padding: 0 30px 0 30px;
+                margin: 50px auto 100px auto;
+                height: 50px;
+                text-align: center;
+            }
+            #icone {
+                margin: 100px auto 100px auto;
+                height: 136;
+            }
+            .botao {
+                padding: 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                color: white;
+                background-color: #5B96CC ;
+                font-weight: 600;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function recarregarApp() {
+                messageHandler.postMessage("3");
+            }
+        </script>
+        <div id="logomarca">
+            <!-- <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">  -->
+        </div>
+        <!-- <img src="ic_erro_inesperado.png">
+        <img src="..\images\icon-no-wifi.png" alt="icon-no-wifi"> -->
+
+        <p>
+            No momento o sistema encontra-se,
+            Indisponivel para acesso, por gentileza,
+            tente mais tarde.
+        </p>
+
+        <div id="botao">
+           <button class="botao" onclick="recarregarApp()">OK</button>
+        </div>
+    </body>
+</html>

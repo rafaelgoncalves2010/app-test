@@ -1,0 +1,78 @@
+group 'co.idwall.sdk_bridge_flutter'
+version '1.0-SNAPSHOT'
+
+
+static def getBridgeVersion() {
+    return "\"2.1.2\""
+}
+
+buildscript {
+    ext.kotlin_version = '1.4.32'
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url idwallUrl
+            credentials(PasswordCredentials) {
+                username = idwallUsername
+                password = idwallPassword
+            }
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+afterEvaluate {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+android {
+    compileSdkVersion 28
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    defaultConfig {
+        minSdkVersion 16
+    }
+
+    buildTypes {
+        defaultConfig {
+            buildConfigField("String", "BRIDGE_VERSION", getBridgeVersion())
+        }
+        debug {
+            buildConfigField("String", "BRIDGE_VERSION", getBridgeVersion())
+        }
+        release {
+            buildConfigField("String", "BRIDGE_VERSION", getBridgeVersion())
+        }
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    // noinspection GradleDynamicVersion
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "co.idwall:sdk-mobile-android:2.9.4"
+}
+

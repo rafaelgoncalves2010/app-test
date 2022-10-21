@@ -1,0 +1,16 @@
+framework module IDwallToolkit {
+    umbrella header "IDwallToolkit.h"
+
+    header "Reachability.h"
+    header "LoggingModule.h"
+    header "OpenCVUtil.h"
+    header "IDwallColors.h"
+
+    export *
+    module * { export * }
+}
+
+module IDwallToolkit.Swift {
+    header "IDwallToolkit-Swift.h"
+    requires objc
+}
